@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/thestdio/Koa-Angular-Starter#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bluebird": "^3.5.0",
     "co": "^4.6.0",
     "cradle": "^0.7.1",
