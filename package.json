@@ -1,0 +1,34 @@
+{
+  "name": "koa-angular-starter",
+  "version": "1.0.0",
+  "description": "A starter using koa, angular, couch, and passport",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thestdio/Koa-Angular-Starter.git"
+  },
+  "author": "cynical89 (@cynical89)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thestdio/Koa-Angular-Starter/issues"
+  },
+  "homepage": "https://github.com/thestdio/Koa-Angular-Starter#readme",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "co": "^4.6.0",
+    "cradle": "^0.7.1",
+    "kcors": "^1.3.2",
+    "koa": "^2.1.0",
+    "koa-bodyparser": "^4.1.0",
+    "koa-generic-session": "^1.11.5",
+    "koa-passport": "^3.0.0",
+    "koa-redis": "^2.1.3",
+    "koa-router": "^5.4.0",
+    "koa-static": "^3.0.0",
+    "koa-static-folder": "^0.1.6",
+    "passport-local": "^1.0.0"
+  }
+}
