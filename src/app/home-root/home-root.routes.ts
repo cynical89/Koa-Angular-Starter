@@ -6,7 +6,7 @@ import { HomeRootComponentGuard } from './home-root.guard';
 
 export const HomeRootRoutes = [
   {
-    path: '',
+    path: 'home',
     component: HomeRootComponent,
     canActivate: [HomeRootComponentGuard],
     children: [

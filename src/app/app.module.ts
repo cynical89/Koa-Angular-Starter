@@ -22,6 +22,7 @@ import { AppRoutingModule, routedComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeRootComponent } from './home-root/home-root.component';
 import { RegisterComponent } from './register/register.component';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { RegisterComponent } from './register/register.component';
     MdIcon,
     MdSpinner,
     HomeRootComponent,
-    RegisterComponent
+    RegisterComponent,
+    IndexComponent
   ],
   providers: [HomeRootComponentGuard,
               UnauthenticatedGuard,
