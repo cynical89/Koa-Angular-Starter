@@ -13,3 +13,16 @@ module.exports.login = function* login() {
 	};
 	// });
 };
+
+module.exports.auth = function* auth() {
+	if (this.isAuthenticated()) {
+		this.body = {
+			"authenticated": true
+		}
+	} else {
+			this.body = {
+				"authenticated": false
+			}
+	}
+	return this.body;
+}

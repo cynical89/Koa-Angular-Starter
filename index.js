@@ -26,10 +26,14 @@ app.proxy = true;
 
 // sessions
 app.keys = [config.site.secret];
+if (process.env.NODE_ENV === "production") {
 app.use(session({
     cookie: {maxAge: 1000 * 60 * 60 * 24},
     store : redis()
 }));
+} else {
+  app.use(session());
+}
 
 // body parser
 app.use(bodyParser());

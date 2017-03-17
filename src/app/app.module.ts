@@ -16,6 +16,8 @@ import { MdSpinner } from '@angular2-material/progress-circle';
 import { HomeRootComponentGuard } from './home-root/home-root.guard';
 import { UnauthenticatedGuard } from './unauthenticated.guard';
 
+import { UserService } from './shared/services/user/user.service';
+
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeRootComponent } from './home-root/home-root.component';
@@ -52,7 +54,8 @@ import { RegisterComponent } from './register/register.component';
   providers: [HomeRootComponentGuard,
               UnauthenticatedGuard,
               MdIconRegistry,
-              {provide: 'apiBase', useValue: 'http://127.0.0.1:5000'}
+              UserService,
+              {provide: 'apiBase', useValue: 'http://localhost:5000'}
             ],
   bootstrap: [AppComponent]
 })

@@ -38,11 +38,7 @@ routes.get("/", () => {
     return ctx.body = {"madeit": "ok"};
 })
 
-routes.get("/api/authenticated", () => {
-    if (this.isAuthenticated()) {
-        return this.body = {"authenticated": true}
-    }
-})
+routes.get("/api/authenticated", main.auth);
 
 // login routes
 routes.get("/api/login", main.login);

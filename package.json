@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently --kill-others -p [{name}] -n \"API,NG2\" -c \"bgGreen.bold,bgRed.bold\" \"./node_modules/.bin/nodemon -e js index.js\" \"ng serve --progress=false --port 8080\"",
+    "dev": "concurrently --kill-others -p [{name}] -n \"API,NG2\" -c \"bgGreen.bold,bgRed.bold\" \"npm run server\" \"ng serve --progress=false\"",
+    "server": "./node_modules/.bin/nodemon -e js index.js",
     "ng": "ng",
     "start": "npm run dev",
     "build": "ng build",
