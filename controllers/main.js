@@ -1,6 +1,6 @@
 "use strict";
 
-const common = require("../helpers/common");
+// const common = require("../helpers/common");
 
 const informationModel = require("../models/information");
 

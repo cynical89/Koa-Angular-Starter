@@ -18,6 +18,7 @@ app.use(cors());
 exports.app = app;
 exports.passport = passport;
 
+// the auth model for passport support
 require("./models/auth");
 
 // trust proxy
@@ -26,8 +27,8 @@ app.proxy = true;
 // sessions
 app.keys = [config.site.secret];
 app.use(session({
-  cookie: {maxAge: 1000 * 60 * 60 * 24},
-  store : redis()
+    cookie: {maxAge: 1000 * 60 * 60 * 24},
+    store : redis()
 }));
 
 // body parser
@@ -39,24 +40,24 @@ app.use(passport.session());
 
 // statically serve assets
 if (process.env.NODE_ENV === "production") {
-	app.use(serve("./dist"));
+    app.use(serve("./dist"));
 }
 
 app.use(function* error(next) {
-	try {
+    try {
 		yield next;
-	} catch (err) {
-		this.status = err.status || 500;
-		this.body = err.message;
-		this.app.emit("error", err, this);
-	}
+    } catch (err) {
+        this.status = err.status || 500;
+        this.body = err.message;
+        this.app.emit("error", err, this);
+    }
 });
 
 require("./routes");
 
-console.log(`${config.name} is now listening on port ${config.site.port}`);
+console.log(`Koa-Angular-Starter is now listening on port ${config.site.port}`);
 app.listen(config.site.port);
 
 process.on("SIGINT", function exit() {
-	process.exit();
+    process.exit();
 });

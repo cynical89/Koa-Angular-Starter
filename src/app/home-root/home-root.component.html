@@ -1,0 +1,38 @@
+<md-sidenav-layout>
+    <md-sidenav #sidenav>
+        <div id="user-profile">
+            <img [attr.src]="profile_picture">
+            <p>{{name}}</p>
+            <p>{{username}}</p>
+        </div>
+
+        <md-nav-list (click)="sidenav.close()">
+
+            <a md-list-item [routerLink]="['/']">
+                <span md-line>Users</span>
+                <span md-line class="secondary">Most recently logged in users</span>
+            </a>
+            <a md-list-item [routerLink]="['/heroes']">
+                <span md-line>Heroes</span>
+                <span md-line class="secondary">Hero registry</span>
+            </a>
+            <a md-list-item (click)="logout()">
+                <span md-line>Logout</span>
+            </a>
+
+        </md-nav-list>
+    </md-sidenav>
+
+    <md-toolbar color="primary">
+        <button md-icon-button (click)="sidenav.open()">
+            <md-icon>menu</md-icon>
+        </button>
+        angular2-login-seed
+    </md-toolbar>
+
+    <div class="content">
+        <h1>{{title}}</h1>
+        <router-outlet></router-outlet>
+    </div>
+
+</md-sidenav-layout>

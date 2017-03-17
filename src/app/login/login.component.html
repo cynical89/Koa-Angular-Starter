@@ -1,0 +1,34 @@
+<div class="content">
+
+    <md-card elevation="5">
+
+        <md-card-subtitle>
+            <h2>Koa-Angular-Starter</h2>
+        </md-card-subtitle>
+
+        <md-card-title>
+            <h2>{{title}}</h2>
+        </md-card-title>
+
+        <md-card-content>
+
+            <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                <md-input formControlName="username" required placeholder="Username"></md-input>
+                <md-input formControlName="password" required type="password" placeholder="Password"></md-input>
+                <button type="submit" [disabled]="!loginForm.form.valid" md-raised-button color="primary">Login</button>
+            </form>
+
+            <md-spinner *ngIf="submitted" mode="indeterminate"></md-spinner>
+
+            <p class="error" *ngIf="errorDiagnostic">{{error}}</p>
+
+            <br>
+            <hr>
+
+            <button (click)="register()" md-raised-button color="accent">Register</button>
+
+        </md-card-content>
+
+    </md-card>
+
+</div>

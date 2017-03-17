@@ -33,6 +33,16 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // routes
+routes.get("/", () => {
+    ctx = this;
+    return ctx.body = {"madeit": "ok"};
+})
+
+routes.get("/api/authenticated", () => {
+    if (this.isAuthenticated()) {
+        return this.body = {"authenticated": true}
+    }
+})
 
 // login routes
 routes.get("/api/login", main.login);
