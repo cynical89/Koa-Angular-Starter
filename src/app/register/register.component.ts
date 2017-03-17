@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
    * Diagnostic message from received
    * form request error
    */
-  errorDiagnostic: string;
+  error: string;
 
   constructor(private _userService: UserService, private _router: Router, private formBuilder: FormBuilder) {
 
@@ -63,14 +63,14 @@ export class RegisterComponent implements OnInit {
      * (show nothing until the request completes)
      */
     this.submitted = true;
-    this.errorDiagnostic = null;
+    this.error = null;
 
     this._userService.register(this.form.value).subscribe(data => {
       this._router.navigateByUrl('/login');
     },
     error => {
       this.submitted = false;
-      this.errorDiagnostic = USER_STATUS_CODES[error.status] || USER_STATUS_CODES[500];
+      this.error = USER_STATUS_CODES[error.status] || USER_STATUS_CODES[500];
     });
   }
 
