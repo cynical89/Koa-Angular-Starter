@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.error = null;
 
         this._userService.login(this.form.value).subscribe(data => {
-            this._router.navigate(['/']);
+            this._router.navigate(['/home']);
         },
             error => {
                 this.submitted = false;

@@ -1,21 +1,24 @@
 const db = require("../helpers/db");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
-generate: (data) => {
-		const returnObj = {
-			id: null,
-			enabled: false,
-			name: "John Doe",
-			password: null
+	newUser: function* newUser(data) {
+		const salt = yield bcrypt.genSalt(10);
+		const hash = yield bcrypt.hash(data.password, salt);
+		const user = {
+			id: data.username,
+			name: data.name,
+			password: hash,
+			email: data.email
 		};
-		return Object.assign(returnObj, data);
+		return user;
 	},
 	get: function* get(id) {
-		const document = yield db.getDocument(id, `${config.id}_user`);
+		const document = yield db.getDocument(id, `st-users`);
 		return document;
 	},
 	save: function* save(document) {
-		const confirmation = yield db.saveDocument(document, `${config.id}_user`);
+		const confirmation = yield db.saveDocument(document, `st-users`);
 		return confirmation;
 	}
 };

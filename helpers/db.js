@@ -58,7 +58,8 @@ exports.saveDocument = function* saveDocument(document, database) {
 	} catch (err) {
 		return {
 			error: true,
-			message: `DB: Save of [${document.id}] failed`
+			message: err
+			//message: `DB: Save of [${document.id}] failed`
 		};
 	}
 };

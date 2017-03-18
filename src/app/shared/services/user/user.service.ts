@@ -18,8 +18,8 @@ export class UserService {
   private _loginApi = this._apiBase + '/api/login';
   private _logoutApi = this._apiBase + '/logout';
   private _authenticatedApi = this._apiBase + '/api/authenticated';
-  private _registerApi = this._apiBase + '/api/users/register';
-  private _userExistsApi = this._apiBase + '/api/users/exists';
+  private _registerApi = this._apiBase + '/api/register';
+  private _userExistsApi = this._apiBase + '/api/exists';
 
   login(user) {
     let body = JSON.stringify(user);

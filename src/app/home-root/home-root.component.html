@@ -3,19 +3,11 @@
         <div id="user-profile">
             <img [attr.src]="profile_picture">
             <p>{{name}}</p>
-            <p>{{username}}</p>
+            <p>{{id}}</p>
         </div>
 
         <md-nav-list (click)="sidenav.close()">
 
-            <a md-list-item [routerLink]="['/']">
-                <span md-line>Users</span>
-                <span md-line class="secondary">Most recently logged in users</span>
-            </a>
-            <a md-list-item [routerLink]="['/heroes']">
-                <span md-line>Heroes</span>
-                <span md-line class="secondary">Hero registry</span>
-            </a>
             <a md-list-item (click)="logout()">
                 <span md-line>Logout</span>
             </a>
@@ -27,7 +19,7 @@
         <button md-icon-button (click)="sidenav.open()">
             <md-icon>menu</md-icon>
         </button>
-        angular2-login-seed
+        Koa Angular Starter
     </md-toolbar>
 
     <div class="content">

@@ -2,7 +2,7 @@
 
 const passport = require("../index.js").passport;
 const config = require("../config.json");
-// const userModel = require("./user");
+const userModel = require("./user");
 const co = require("co");
 const bcrypt = require("bcryptjs");
 
@@ -25,8 +25,6 @@ passport.use(new LocalStrategy(
 		co(function* auth() {
 			// get the user
 			const user = yield userModel.get(username);
-			// const salt = yield bcrypt.genSalt(10);
-			// const hash = yield bcrypt.hash(password, salt);
 			if (user.error === true) {
 				// this user doesn't exist
 				return done(null, false);

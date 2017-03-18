@@ -22,7 +22,6 @@ export class HomeRootComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getMe();
     }
 
     logout() {
@@ -33,14 +32,6 @@ export class HomeRootComponent implements OnInit {
             data => {
                 if (!data.loggedOut) this._router.navigate(['/login']);;
             });
-    }
-
-    getMe() {
-        this._userService.getMe().subscribe(me => {
-            this.me = me;
-            this.name = this.me.name;
-            this.username = this.me.username;
-        });
     }
 
     title = 'Home Root Component';

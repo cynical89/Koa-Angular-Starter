@@ -41,7 +41,6 @@ routes.get("/", () => {
 routes.get("/api/authenticated", main.auth);
 
 // login routes
-routes.get("/api/login", main.login);
 routes.post("/api/login", function* (next) {
 	const ctx = this;
 	yield passport.authenticate("local", function* (err, user, info) {
@@ -59,5 +58,7 @@ routes.post("/api/login", function* (next) {
 		}
 	}).call(this, next);
 });
+
+routes.post("/api/register", main.register);
 
 app.use(routes.middleware());
