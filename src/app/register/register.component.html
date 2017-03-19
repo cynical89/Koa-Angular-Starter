@@ -14,10 +14,17 @@
         <h2>Create an account</h2>
 
         <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #registerForm="ngForm">
-          <md-input formControlName="name" required placeholder="Name"></md-input>
-          <md-input formControlName="username" required placeholder="Username"></md-input>
-          <md-input formControlName="email" required placeholder="example@email.com"></md-input>
-          <md-input formControlName="password" required type="password" placeholder="Password"></md-input>
+          <md-input formControlName="name" required placeholder="Name"></md-input><br>
+          <md-input formControlName="username" required placeholder="Username"></md-input><br>
+          <md-input formControlName="email" required placeholder="example@email.com"></md-input><br>
+          <md-input formControlName="password" required type="password" placeholder="Password"></md-input><br>
+          <md-input formControlName="confirmpassword" required type="password" placeholder="Confirm Password"></md-input><br>
+          <div class="error" *ngIf="formErrors.name">{{ formErrors.name }}</div>
+          <div class="error" *ngIf="formErrors.username">{{ formErrors.username }}</div>
+          <div class="error" *ngIf="formErrors.email">{{ formErrors.email }}</div>
+          <div class="error" *ngIf="formErrors.password">{{ formErrors.password }}</div>
+          <div class="error" *ngIf="formErrors.confirmpassword">{{ formErrors.confirmpassword }}</div>
+          <div class="error" *ngIf="form.hasError('mismatchedPasswords')">Passwords do not match.</div><br>
           <button type="submit" [disabled]="!registerForm.form.valid" md-raised-button color="primary">Register</button>
         </form>
 
