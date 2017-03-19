@@ -9,7 +9,9 @@ const fs = require("fs");
 
 const routes = new Router();
 
+const common = require("./helpers/common");
 const main = require("./controllers/main");
+const auth = require("./controllers/auth");
 
 function loadHtml() {
 	return new Promise(function(resolve, reject) {
@@ -27,38 +29,16 @@ if (process.env.NODE_ENV === "production") {
 		if (this.request.url.startsWith("/api")) {
 			yield next;
 		} else {
-			this.body = yield loadHtml();
+			this.body = yield common.loadHtml();
 		}
 	});
 }
 
 // routes
-routes.get("/", () => {
-    ctx = this;
-    return ctx.body = {"madeit": "ok"};
-})
-
-routes.get("/api/authenticated", main.auth);
+routes.get("/api/authenticated", main.authenticated);
 
 // login routes
-routes.post("/api/login", function* (next) {
-	const ctx = this;
-	yield passport.authenticate("local", function* (err, user, info) {
-		if (err) throw err;
-		if (user === false) {
-			ctx.status = 401;
-			ctx.body = {
-				success: false
-			};
-		} else {
-			yield ctx.login(user);
-			ctx.body = {
-				success: true
-			};
-		}
-	}).call(this, next);
-});
-
-routes.post("/api/register", main.register);
+routes.post("/api/login", auth.login);
+routes.post("/api/register", auth.register);
 
 app.use(routes.middleware());
