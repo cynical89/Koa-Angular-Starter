@@ -4,10 +4,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "concurrently --kill-others -p [{name}] -n \"API,NG2\" -c \"bgGreen.bold,bgRed.bold\" \"npm run server\" \"ng serve --progress=false --port 8080\"",
+    "prod": "concurrently --kill-others -p [{name}] -n \"NG2,API\" -c \"bgRed.bold,bgGreen.bold\" \"ng build --prod --watch=true\" \"npm run prod-server\"",
     "server": "./node_modules/.bin/nodemon -e js index.js",
-    "ng": "ng",
+    "prod-server": "NODE_ENV=production ./node_modules/.bin/nodemon -e js index.js",
     "start": "npm run dev",
-    "build": "ng build",
+    "build": "ng build --prod --sm=false --aot=true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
