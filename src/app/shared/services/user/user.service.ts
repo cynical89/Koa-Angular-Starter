@@ -17,10 +17,9 @@ export class UserService {
   }
 
   private _loginApi = environment.production ? 'api/login' : this._apiBase + '/api/login';
-  private _logoutApi = environment.production ? 'logout' : this._apiBase + '/logout';
+  private _logoutApi = environment.production ? 'api/logout' : this._apiBase + '/api/logout';
   private _authenticatedApi = environment.production ? '/api/authenticated' : this._apiBase + '/api/authenticated';
   private _registerApi = environment.production ? 'api/register' : this._apiBase + '/api/register';
-  private _userExistsApi = environment.production ? 'api/exists' : this._apiBase + '/api/exists';
 
   login(user) {
     let body = JSON.stringify(user);

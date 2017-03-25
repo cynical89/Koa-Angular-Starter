@@ -38,6 +38,7 @@ routes.get("/api/authenticated", main.authenticated);
 
 // login routes
 routes.post("/api/login", auth.login);
+routes.get("/api/logout", auth.logout);
 routes.post("/api/register", auth.register);
 
 app.use(routes.middleware());

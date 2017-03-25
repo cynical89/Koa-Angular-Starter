@@ -40,3 +40,8 @@ module.exports.register = function* register() {
 	}
 	return this.body = result;
 };
+
+module.exports.logout = function* logout() {
+	yield this.logout();
+	return this.body = "OK";
+};

@@ -23,6 +23,7 @@ import { AppComponent } from './app.component';
 import { HomeRootComponent } from './home-root/home-root.component';
 import { RegisterComponent } from './register/register.component';
 import { IndexComponent } from './index/index.component';
+import { LogoutComponent } from './home-root/logout/logout.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { IndexComponent } from './index/index.component';
     MdSpinner,
     HomeRootComponent,
     RegisterComponent,
-    IndexComponent
+    IndexComponent,
+    LogoutComponent
   ],
   providers: [HomeRootComponentGuard,
               UnauthenticatedGuard,
