@@ -44,30 +44,6 @@ export class LoginComponent implements OnInit, OnDestroy {
         return this.authenticatedObs;
     }
 
-    openAuthWindow(provider: string) {
-        /**
-         * Total hack until new router is used (for authentication and activation logic)
-         */
-        var newWindow = window.open(`${this._apiBase}/authorize/${provider}`, 'name', 'height=585, width=770');
-        if (window.focus) {
-            newWindow.focus();
-        }
-
-        let source = Observable.interval(2000)
-            .map(() => {
-                this.userServiceSub = this.authenticated().subscribe(data => {
-                    if (data) {
-                        this._router.navigate(['/']);
-                        newWindow.close();
-                    }
-                })
-            })
-
-        if (this.authSub) this.authSub.unsubscribe();
-        this.authSub = source.subscribe();
-
-    }
-
     register() {
         this._router.navigate(['/register']);
     }

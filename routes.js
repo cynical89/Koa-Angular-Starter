@@ -9,7 +9,6 @@ const fs = require("fs");
 
 const routes = new Router();
 
-const common = require("./helpers/common");
 const main = require("./controllers/main");
 const auth = require("./controllers/auth");
 
@@ -29,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
 		if (this.request.url.startsWith("/api")) {
 			yield next;
 		} else {
-			this.body = yield common.loadHtml();
+			this.body = yield loadHtml();
 		}
 	});
 }

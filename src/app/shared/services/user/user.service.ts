@@ -8,6 +8,7 @@ import 'rxjs/add/observable/throw';
  * Import interfaces that service depends on
  */
 import { User } from './user';
+import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class UserService {
@@ -15,30 +16,30 @@ export class UserService {
 
   }
 
-  private _loginApi = this._apiBase + '/api/login';
-  private _logoutApi = this._apiBase + '/logout';
-  private _authenticatedApi = this._apiBase + '/api/authenticated';
-  private _registerApi = this._apiBase + '/api/register';
-  private _userExistsApi = this._apiBase + '/api/exists';
+  private _loginApi = environment.production ? 'api/login' : this._apiBase + '/api/login';
+  private _logoutApi = environment.production ? 'logout' : this._apiBase + '/logout';
+  private _authenticatedApi = environment.production ? '/api/authenticated' : this._apiBase + '/api/authenticated';
+  private _registerApi = environment.production ? 'api/register' : this._apiBase + '/api/register';
+  private _userExistsApi = environment.production ? 'api/exists' : this._apiBase + '/api/exists';
 
   login(user) {
     let body = JSON.stringify(user);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    return this.http.post(this._loginApi, body, <RequestOptionsArgs> {headers: headers, withCredentials: true})
+    return this.http.post(this._loginApi, body)
                     .map((res: Response) => res)
                     .catch(this.handleError);
   }
 
   authenticated() {
-    return this.http.get(this._authenticatedApi, <RequestOptionsArgs> {withCredentials: true})
+    return this.http.get(this._authenticatedApi)
                     .map((res: Response) => res.json())
                     .catch(this.handleError);
   }
 
   logout() {
-    return this.http.get(this._logoutApi, <RequestOptionsArgs> {withCredentials: true})
+    return this.http.get(this._logoutApi)
                     .map((res: Response) => res.json())
                     .catch(this.handleError);
   }
@@ -48,21 +49,9 @@ export class UserService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    return this.http.post(this._registerApi, body, <RequestOptionsArgs> {headers: headers, withCredentials: true})
+    return this.http.post(this._registerApi, body)
                     .map((res: Response) => res)
                     .catch(this.handleError);
-  }
-
-  getUsers() {
-    return this.http.get(this._apiBase + "/api/users?limit=5&desc=true", <RequestOptionsArgs> {withCredentials: true})
-                  .map((res: Response) => res.json())
-                  .catch(this.handleError);
-  }
-
-  getMe() {
-    return this.http.get(this._apiBase + '/api/users/me/', <RequestOptionsArgs> {withCredentials: true})
-                  .map((res: Response) => res.json().me)
-                  .catch(this.handleError);
   }
 
   private handleError (error: Response) {
